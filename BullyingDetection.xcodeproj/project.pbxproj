@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF8B695A2274E062008B75F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B69592274E062008B75F9 /* AppDelegate.swift */; };
+		AF8B695C2274E062008B75F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B695B2274E062008B75F9 /* ViewController.swift */; };
+		AF8B695F2274E062008B75F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8B695D2274E062008B75F9 /* Main.storyboard */; };
+		AF8B69612274E064008B75F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF8B69602274E064008B75F9 /* Assets.xcassets */; };
+		AF8B69642274E064008B75F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8B69622274E064008B75F9 /* LaunchScreen.storyboard */; };
+		AF8B69692274E064008B75F9 /* BullyingDetection WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AF8B69682274E064008B75F9 /* BullyingDetection WatchKit App.app */; };
+		AF8B696F2274E064008B75F9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8B696D2274E064008B75F9 /* Interface.storyboard */; };
+		AF8B69712274E065008B75F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF8B69702274E065008B75F9 /* Assets.xcassets */; };
+		AF8B69782274E065008B75F9 /* BullyingDetection WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AF8B69772274E065008B75F9 /* BullyingDetection WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AF8B697D2274E065008B75F9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B697C2274E065008B75F9 /* InterfaceController.swift */; };
+		AF8B697F2274E065008B75F9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B697E2274E065008B75F9 /* ExtensionDelegate.swift */; };
+		AF8B69812274E066008B75F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF8B69802274E066008B75F9 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF8B696A2274E064008B75F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF8B694E2274E062008B75F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF8B69672274E064008B75F9;
+			remoteInfo = "BullyingDetection WatchKit App";
+		};
+		AF8B69792274E065008B75F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF8B694E2274E062008B75F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF8B69762274E065008B75F9;
+			remoteInfo = "BullyingDetection WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AF8B69882274E066008B75F9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AF8B69782274E065008B75F9 /* BullyingDetection WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8B698C2274E066008B75F9 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AF8B69692274E064008B75F9 /* BullyingDetection WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AF7506CB2275F92700A868A1 /* BullyingDetection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BullyingDetection.entitlements; sourceTree = "<group>"; };
+		AF8B69562274E062008B75F9 /* BullyingDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullyingDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8B69592274E062008B75F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF8B695B2274E062008B75F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF8B695E2274E062008B75F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF8B69602274E064008B75F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF8B69632274E064008B75F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF8B69652274E064008B75F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8B69682274E064008B75F9 /* BullyingDetection WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BullyingDetection WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8B696E2274E064008B75F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		AF8B69702274E065008B75F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF8B69722274E065008B75F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF8B69772274E065008B75F9 /* BullyingDetection WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BullyingDetection WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF8B697C2274E065008B75F9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		AF8B697E2274E065008B75F9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		AF8B69802274E066008B75F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF8B69822274E066008B75F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF8B69532274E062008B75F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8B69742274E065008B75F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF7506CC2275F92700A868A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF8B694D2274E062008B75F9 = {
+			isa = PBXGroup;
+			children = (
+				AF8B69582274E062008B75F9 /* BullyingDetection */,
+				AF8B696C2274E064008B75F9 /* BullyingDetection WatchKit App */,
+				AF8B697B2274E065008B75F9 /* BullyingDetection WatchKit Extension */,
+				AF8B69572274E062008B75F9 /* Products */,
+				AF7506CC2275F92700A868A1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AF8B69572274E062008B75F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF8B69562274E062008B75F9 /* BullyingDetection.app */,
+				AF8B69682274E064008B75F9 /* BullyingDetection WatchKit App.app */,
+				AF8B69772274E065008B75F9 /* BullyingDetection WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF8B69582274E062008B75F9 /* BullyingDetection */ = {
+			isa = PBXGroup;
+			children = (
+				AF7506CB2275F92700A868A1 /* BullyingDetection.entitlements */,
+				AF8B69592274E062008B75F9 /* AppDelegate.swift */,
+				AF8B695B2274E062008B75F9 /* ViewController.swift */,
+				AF8B695D2274E062008B75F9 /* Main.storyboard */,
+				AF8B69602274E064008B75F9 /* Assets.xcassets */,
+				AF8B69622274E064008B75F9 /* LaunchScreen.storyboard */,
+				AF8B69652274E064008B75F9 /* Info.plist */,
+			);
+			path = BullyingDetection;
+			sourceTree = "<group>";
+		};
+		AF8B696C2274E064008B75F9 /* BullyingDetection WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				AF8B696D2274E064008B75F9 /* Interface.storyboard */,
+				AF8B69702274E065008B75F9 /* Assets.xcassets */,
+				AF8B69722274E065008B75F9 /* Info.plist */,
+			);
+			path = "BullyingDetection WatchKit App";
+			sourceTree = "<group>";
+		};
+		AF8B697B2274E065008B75F9 /* BullyingDetection WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AF8B697C2274E065008B75F9 /* InterfaceController.swift */,
+				AF8B697E2274E065008B75F9 /* ExtensionDelegate.swift */,
+				AF8B69802274E066008B75F9 /* Assets.xcassets */,
+				AF8B69822274E066008B75F9 /* Info.plist */,
+			);
+			path = "BullyingDetection WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF8B69552274E062008B75F9 /* BullyingDetection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8B698D2274E066008B75F9 /* Build configuration list for PBXNativeTarget "BullyingDetection" */;
+			buildPhases = (
+				AF8B69522274E062008B75F9 /* Sources */,
+				AF8B69532274E062008B75F9 /* Frameworks */,
+				AF8B69542274E062008B75F9 /* Resources */,
+				AF8B698C2274E066008B75F9 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF8B696B2274E064008B75F9 /* PBXTargetDependency */,
+			);
+			name = BullyingDetection;
+			productName = BullyingDetection;
+			productReference = AF8B69562274E062008B75F9 /* BullyingDetection.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF8B69672274E064008B75F9 /* BullyingDetection WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8B69892274E066008B75F9 /* Build configuration list for PBXNativeTarget "BullyingDetection WatchKit App" */;
+			buildPhases = (
+				AF8B69662274E064008B75F9 /* Resources */,
+				AF8B69882274E066008B75F9 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF8B697A2274E065008B75F9 /* PBXTargetDependency */,
+			);
+			name = "BullyingDetection WatchKit App";
+			productName = "BullyingDetection WatchKit App";
+			productReference = AF8B69682274E064008B75F9 /* BullyingDetection WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AF8B69762274E065008B75F9 /* BullyingDetection WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF8B69852274E066008B75F9 /* Build configuration list for PBXNativeTarget "BullyingDetection WatchKit Extension" */;
+			buildPhases = (
+				AF8B69732274E065008B75F9 /* Sources */,
+				AF8B69742274E065008B75F9 /* Frameworks */,
+				AF8B69752274E065008B75F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BullyingDetection WatchKit Extension";
+			productName = "BullyingDetection WatchKit Extension";
+			productReference = AF8B69772274E065008B75F9 /* BullyingDetection WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF8B694E2274E062008B75F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Dung Ho";
+				TargetAttributes = {
+					AF8B69552274E062008B75F9 = {
+						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+						};
+					};
+					AF8B69672274E064008B75F9 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					AF8B69762274E065008B75F9 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+				};
+			};
+			buildConfigurationList = AF8B69512274E062008B75F9 /* Build configuration list for PBXProject "BullyingDetection" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF8B694D2274E062008B75F9;
+			productRefGroup = AF8B69572274E062008B75F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF8B69552274E062008B75F9 /* BullyingDetection */,
+				AF8B69672274E064008B75F9 /* BullyingDetection WatchKit App */,
+				AF8B69762274E065008B75F9 /* BullyingDetection WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF8B69542274E062008B75F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8B69642274E064008B75F9 /* LaunchScreen.storyboard in Resources */,
+				AF8B69612274E064008B75F9 /* Assets.xcassets in Resources */,
+				AF8B695F2274E062008B75F9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8B69662274E064008B75F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8B69712274E065008B75F9 /* Assets.xcassets in Resources */,
+				AF8B696F2274E064008B75F9 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8B69752274E065008B75F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8B69812274E066008B75F9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF8B69522274E062008B75F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8B695C2274E062008B75F9 /* ViewController.swift in Sources */,
+				AF8B695A2274E062008B75F9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF8B69732274E065008B75F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF8B697F2274E065008B75F9 /* ExtensionDelegate.swift in Sources */,
+				AF8B697D2274E065008B75F9 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF8B696B2274E064008B75F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF8B69672274E064008B75F9 /* BullyingDetection WatchKit App */;
+			targetProxy = AF8B696A2274E064008B75F9 /* PBXContainerItemProxy */;
+		};
+		AF8B697A2274E065008B75F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF8B69762274E065008B75F9 /* BullyingDetection WatchKit Extension */;
+			targetProxy = AF8B69792274E065008B75F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AF8B695D2274E062008B75F9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF8B695E2274E062008B75F9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AF8B69622274E064008B75F9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF8B69632274E064008B75F9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AF8B696D2274E064008B75F9 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF8B696E2274E064008B75F9 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF8B69832274E066008B75F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF8B69842274E066008B75F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF8B69862274E066008B75F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = "BullyingDetection WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dungho19.BullyingDetection.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		AF8B69872274E066008B75F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = "BullyingDetection WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dungho19.BullyingDetection.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		AF8B698A2274E066008B75F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				IBSC_MODULE = BullyingDetection_WatchKit_Extension;
+				INFOPLIST_FILE = "BullyingDetection WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = dungho19.BullyingDetection.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		AF8B698B2274E066008B75F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				IBSC_MODULE = BullyingDetection_WatchKit_Extension;
+				INFOPLIST_FILE = "BullyingDetection WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = dungho19.BullyingDetection.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		AF8B698E2274E066008B75F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = BullyingDetection/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dungho19.BullyingDetection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF8B698F2274E066008B75F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = BullyingDetection/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dungho19.BullyingDetection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF8B69512274E062008B75F9 /* Build configuration list for PBXProject "BullyingDetection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8B69832274E066008B75F9 /* Debug */,
+				AF8B69842274E066008B75F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8B69852274E066008B75F9 /* Build configuration list for PBXNativeTarget "BullyingDetection WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8B69862274E066008B75F9 /* Debug */,
+				AF8B69872274E066008B75F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8B69892274E066008B75F9 /* Build configuration list for PBXNativeTarget "BullyingDetection WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8B698A2274E066008B75F9 /* Debug */,
+				AF8B698B2274E066008B75F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF8B698D2274E066008B75F9 /* Build configuration list for PBXNativeTarget "BullyingDetection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF8B698E2274E066008B75F9 /* Debug */,
+				AF8B698F2274E066008B75F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF8B694E2274E062008B75F9 /* Project object */;
+}
