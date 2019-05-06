@@ -14,7 +14,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="BullyingDetection_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="center" text="Further signals are sent ..." numberOfLines="5" id="795-KS-zmx">
+                        <label width="100" height="44" alignment="center" verticalAlignment="center" text="Signals are sent  ..." numberOfLines="5" id="795-KS-zmx">
                             <color key="textColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="0.93471746580000004" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Record" id="NL0-C8-kIz">

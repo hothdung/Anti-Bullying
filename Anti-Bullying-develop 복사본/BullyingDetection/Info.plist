@@ -59,5 +59,7 @@
     <key>NSHealthShareUsageDescription</key>
     <string>BullyingDetection accesses health data so that saved workouts can be
         accessed later.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Access to mircrophone required!</string>
 </dict>
 </plist>

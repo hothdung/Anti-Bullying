@@ -5,7 +5,6 @@
 //  Created by Dung Ho and Jaeyoung Kim
 //  Copyright © 2019 호탄융, 김재영. All rights reserved.
 //
-
 import WatchKit
 import Foundation
 import CoreLocation
@@ -14,37 +13,12 @@ import HealthKit
 
 let hrType:HKQuantityType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
 
-// retrieve components of full date: date, day, time
-extension Date{
-    func getDate(date: String)->String?{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = date
-        return dateFormatter.string(from: self)
-        
-    }
-}
+// Date will be constructed in database --> server side
 
 
 class InterfaceController: WKInterfaceController, CLLocationManagerDelegate{
     
-    // primary detection signal --> heartrate
-    
-    struct HeartRateSignal: Codable{
-        var bpm: Double
-    }
-    
-    
-    // preparing JSON
-    struct AddBullySignals: Codable {
-        var latitude: Double
-        var longitude: Double
-        let date: String
-        let day: String
-        let time: String
-    }
-    static var currentPos = [Double](repeating: 0, count:2)
-    
-    static var additionalSigs: AddBullySignals?
+    var saveUrl: URL?
     
     // to conduct permission to retrieve location data
     var locationManager: CLLocationManager = CLLocationManager()
@@ -86,7 +60,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate{
         let currentLoc =  locations[0]
         let lat = currentLoc.coordinate.latitude
         let long = currentLoc.coordinate.longitude
-        showLabel(latPos: lat, longPos: long)
         print(lat)
         print(long)
         
@@ -119,7 +92,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate{
             break
         default:
             print(err)
-            print("Test test test")
         }
     }
     
@@ -134,53 +106,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate{
         super.didDeactivate()
     }
     
-    func showLabel(latPos: Double, longPos: Double){
-        
-        // build JSON
-        let time_Component = AddBullySignals(latitude: latPos, longitude: longPos, date:Date().getDate(date:"yyyy/MMMM/dd")!, day:Date().getDate(date:"EEEE")!, time:Date().getDate(date:"HH:mm a")!)
-        print("\(time_Component)"+"Test")
-        
-        guard let jsonData = try? JSONEncoder().encode(time_Component) else{
-            return
-        }
-        // test
-        let jsonString = String(data: jsonData, encoding: .utf8)
-        furtherSigLabels.setText(jsonString)
-        //print(jsonString)
-        
-        // configuration of URL request
-        let url = URL(string: "http://147.46.242.219/addsound.php")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // upload json file
-        let task = URLSession.shared.uploadTask(with: request, from: jsonData) { data, response, error in
-            if let error = error {
-                print ("error: \(error)")
-                return
-            }
-            guard let response = response as? HTTPURLResponse,
-                (200...299).contains(response.statusCode) else {
-                    print ("server error")
-                    return
-            }
-            print("\(response.statusCode)")
-            
-            if let mimeType = response.mimeType,
-                mimeType == "application/json",
-                let data = data,
-                let dataString = String(data: data, encoding: .utf8) {
-                print ("got data: \(dataString)")
-            }
-        }
-        task.resume()
-    }
-    
     
     // when button clicked label is shown
     @IBAction func btnPressed() {
-        //showLabel()
         
         if(!isRecording){
             let stopTitle = NSMutableAttributedString(string: "Stop Recording")
@@ -243,6 +171,39 @@ extension InterfaceController: HKWorkoutSessionDelegate{
         
         healthStore.start(self.session!)
         //print("Start Workout Session")
+        
+        
+        /**
+        let fileManager = FileManager.default
+        let container = fileManager.containerURL(forSecurityApplicationGroupIdentifier:"group.com.project.BullyDetection")
+        
+        let fileName = "audioFile.wav"
+        
+        saveUrl = container?.appendingPathComponent(fileName)
+        
+        
+        let duration = TimeInterval(10)
+        let recordOptions = [WKAudioRecorderControllerOptionsMaximumDurationKey : duration]
+        
+        presentAudioRecorderController(withOutputURL: saveUrl! as URL, preset: .narrowBandSpeech, options: recordOptions, completion: { saved, error in
+            
+            if let err = error {
+                print(err)
+            }
+            
+            if saved {
+               // self.playBtn.setEnabled(true)
+                //var tmp = self.saveUrl?.absoluteString
+                //print("Test")
+                //print(tmp)
+                
+            }
+            
+            let audioFile = NSData(contentsOf: self.saveUrl as! URL)
+            print(audioFile)
+            
+        })
+         */
     }
     
     func heartRateQuery(_ startDate: Date) -> HKQuery? {
@@ -260,15 +221,13 @@ extension InterfaceController: HKWorkoutSessionDelegate{
                 
                 // after extraction of bpm value conversion to double
                 let value = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
-                var heartRate_Student = HeartRateSignal(bpm: value)
-                heartRate_Student.bpm = value
                 
                 
                 let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addheartrate2.php")! as URL)
                 request.httpMethod = "POST"
                 let postString = "a=\(value)"
                 request.httpBody = postString.data(using: .utf8)
-              
+                
                 let task = URLSession.shared.dataTask(with: request as URLRequest) {
                     data, response, error in
                     
@@ -282,50 +241,11 @@ extension InterfaceController: HKWorkoutSessionDelegate{
                     let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
                     print("responseString = \(responseString)")
                 }
-
+                
                 task.resume()
-                /*
-                // building json with heartrate
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                
-                do {
-                    let jsonData = try encoder.encode(heartRate_Student)
-                    print(jsonData)
-                    
-                
-                    let url = URL(string: "http://147.46.242.219/addheartrate2.php")!
-                    var request = URLRequest(url: url)
-                    request.httpMethod = "POST"
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    
-                    let task = URLSession.shared.uploadTask(with: request, from: jsonData) { data, response, error in
-                        if let error = error {
-                            print ("error: \(error)")
-                            return
-                        }
-                        guard let response = response as? HTTPURLResponse,
-                            (200...299).contains(response.statusCode) else {
-                                print ("server error")
-                                return
-                        }
-                        if let mimeType = response.mimeType,
-                            mimeType == "application/json",
-                            let data = data,
-                            let dataString = String(data: data, encoding: .utf8) {
-                            print ("got data: \(dataString)")
-                            //print(dataString)
-                        }
-                    }
-                    task.resume()
-                } catch {
-                    print(error.localizedDescription)
-                }
-                */
                 
                 print("This line is executed!")
                 print(String(UInt16(value)))
-                // self.label.setText(String(UInt16(value))) //Update label
             }
             
         }
@@ -333,7 +253,9 @@ extension InterfaceController: HKWorkoutSessionDelegate{
         return heartRateQuery
     }
     
+
 }
+
 class HealthDataService {
     internal let healthKitStore:HKHealthStore = HKHealthStore()
     
@@ -347,5 +269,3 @@ class HealthDataService {
         }
     }
 }
-
-
