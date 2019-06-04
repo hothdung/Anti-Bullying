@@ -1,0 +1,648 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF2156882299B6C700DBDCBB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2156872299B6C700DBDCBB /* AVFoundation.framework */; };
+		AF21568A2299B70D00DBDCBB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2156892299B70D00DBDCBB /* AVFoundation.framework */; };
+		AF6D90BE2296A38E00F19AF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D90BD2296A38E00F19AF2 /* AppDelegate.swift */; };
+		AF6D90C02296A38E00F19AF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D90BF2296A38E00F19AF2 /* ViewController.swift */; };
+		AF6D90C32296A38E00F19AF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6D90C12296A38E00F19AF2 /* Main.storyboard */; };
+		AF6D90C52296A39100F19AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6D90C42296A39100F19AF2 /* Assets.xcassets */; };
+		AF6D90C82296A39100F19AF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6D90C62296A39100F19AF2 /* LaunchScreen.storyboard */; };
+		AF6D90CD2296A39100F19AF2 /* AudioTest WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AF6D90CC2296A39100F19AF2 /* AudioTest WatchKit App.app */; };
+		AF6D90D32296A39100F19AF2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6D90D12296A39100F19AF2 /* Interface.storyboard */; };
+		AF6D90D52296A39200F19AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6D90D42296A39200F19AF2 /* Assets.xcassets */; };
+		AF6D90DC2296A39200F19AF2 /* AudioTest WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AF6D90DB2296A39200F19AF2 /* AudioTest WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AF6D90E12296A39200F19AF2 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D90E02296A39200F19AF2 /* InterfaceController.swift */; };
+		AF6D90E32296A39200F19AF2 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D90E22296A39200F19AF2 /* ExtensionDelegate.swift */; };
+		AF6D90E52296A39200F19AF2 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D90E42296A39200F19AF2 /* NotificationController.swift */; };
+		AF6D90E72296A39300F19AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6D90E62296A39300F19AF2 /* Assets.xcassets */; };
+		AFF59E522299BC7100537796 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF59E512299BC7100537796 /* AVKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF6D90CE2296A39100F19AF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF6D90B22296A38E00F19AF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF6D90CB2296A39100F19AF2;
+			remoteInfo = "AudioTest WatchKit App";
+		};
+		AF6D90DD2296A39200F19AF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF6D90B22296A38E00F19AF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF6D90DA2296A39200F19AF2;
+			remoteInfo = "AudioTest WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AF6D90EF2296A39300F19AF2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AF6D90DC2296A39200F19AF2 /* AudioTest WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF6D90F32296A39300F19AF2 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AF6D90CD2296A39100F19AF2 /* AudioTest WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AF2156872299B6C700DBDCBB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AF2156892299B70D00DBDCBB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS5.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		AF6D90BA2296A38E00F19AF2 /* AudioTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF6D90BD2296A38E00F19AF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF6D90BF2296A38E00F19AF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF6D90C22296A38E00F19AF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF6D90C42296A39100F19AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF6D90C72296A39100F19AF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF6D90C92296A39100F19AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF6D90CC2296A39100F19AF2 /* AudioTest WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AudioTest WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF6D90D22296A39100F19AF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		AF6D90D42296A39200F19AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF6D90D62296A39200F19AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF6D90DB2296A39200F19AF2 /* AudioTest WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "AudioTest WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF6D90E02296A39200F19AF2 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		AF6D90E22296A39200F19AF2 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		AF6D90E42296A39200F19AF2 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		AF6D90E62296A39300F19AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF6D90E82296A39300F19AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF6D90E92296A39300F19AF2 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		AFF59E512299BC7100537796 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF6D90B72296A38E00F19AF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFF59E522299BC7100537796 /* AVKit.framework in Frameworks */,
+				AF2156882299B6C700DBDCBB /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF6D90D82296A39200F19AF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF21568A2299B70D00DBDCBB /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF2156862299B6C700DBDCBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFF59E512299BC7100537796 /* AVKit.framework */,
+				AF2156892299B70D00DBDCBB /* AVFoundation.framework */,
+				AF2156872299B6C700DBDCBB /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF6D90B12296A38E00F19AF2 = {
+			isa = PBXGroup;
+			children = (
+				AF6D90BC2296A38E00F19AF2 /* AudioTest */,
+				AF6D90D02296A39100F19AF2 /* AudioTest WatchKit App */,
+				AF6D90DF2296A39200F19AF2 /* AudioTest WatchKit Extension */,
+				AF6D90BB2296A38E00F19AF2 /* Products */,
+				AF2156862299B6C700DBDCBB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AF6D90BB2296A38E00F19AF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF6D90BA2296A38E00F19AF2 /* AudioTest.app */,
+				AF6D90CC2296A39100F19AF2 /* AudioTest WatchKit App.app */,
+				AF6D90DB2296A39200F19AF2 /* AudioTest WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF6D90BC2296A38E00F19AF2 /* AudioTest */ = {
+			isa = PBXGroup;
+			children = (
+				AF6D90BD2296A38E00F19AF2 /* AppDelegate.swift */,
+				AF6D90BF2296A38E00F19AF2 /* ViewController.swift */,
+				AF6D90C12296A38E00F19AF2 /* Main.storyboard */,
+				AF6D90C42296A39100F19AF2 /* Assets.xcassets */,
+				AF6D90C62296A39100F19AF2 /* LaunchScreen.storyboard */,
+				AF6D90C92296A39100F19AF2 /* Info.plist */,
+			);
+			path = AudioTest;
+			sourceTree = "<group>";
+		};
+		AF6D90D02296A39100F19AF2 /* AudioTest WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				AF6D90D12296A39100F19AF2 /* Interface.storyboard */,
+				AF6D90D42296A39200F19AF2 /* Assets.xcassets */,
+				AF6D90D62296A39200F19AF2 /* Info.plist */,
+			);
+			path = "AudioTest WatchKit App";
+			sourceTree = "<group>";
+		};
+		AF6D90DF2296A39200F19AF2 /* AudioTest WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AF6D90E02296A39200F19AF2 /* InterfaceController.swift */,
+				AF6D90E22296A39200F19AF2 /* ExtensionDelegate.swift */,
+				AF6D90E42296A39200F19AF2 /* NotificationController.swift */,
+				AF6D90E62296A39300F19AF2 /* Assets.xcassets */,
+				AF6D90E82296A39300F19AF2 /* Info.plist */,
+				AF6D90E92296A39300F19AF2 /* PushNotificationPayload.apns */,
+			);
+			path = "AudioTest WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF6D90B92296A38E00F19AF2 /* AudioTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF6D90F42296A39300F19AF2 /* Build configuration list for PBXNativeTarget "AudioTest" */;
+			buildPhases = (
+				AF6D90B62296A38E00F19AF2 /* Sources */,
+				AF6D90B72296A38E00F19AF2 /* Frameworks */,
+				AF6D90B82296A38E00F19AF2 /* Resources */,
+				AF6D90F32296A39300F19AF2 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF6D90CF2296A39100F19AF2 /* PBXTargetDependency */,
+			);
+			name = AudioTest;
+			productName = AudioTest;
+			productReference = AF6D90BA2296A38E00F19AF2 /* AudioTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF6D90CB2296A39100F19AF2 /* AudioTest WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF6D90F02296A39300F19AF2 /* Build configuration list for PBXNativeTarget "AudioTest WatchKit App" */;
+			buildPhases = (
+				AF6D90CA2296A39100F19AF2 /* Resources */,
+				AF6D90EF2296A39300F19AF2 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF6D90DE2296A39200F19AF2 /* PBXTargetDependency */,
+			);
+			name = "AudioTest WatchKit App";
+			productName = "AudioTest WatchKit App";
+			productReference = AF6D90CC2296A39100F19AF2 /* AudioTest WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AF6D90DA2296A39200F19AF2 /* AudioTest WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF6D90EC2296A39300F19AF2 /* Build configuration list for PBXNativeTarget "AudioTest WatchKit Extension" */;
+			buildPhases = (
+				AF6D90D72296A39200F19AF2 /* Sources */,
+				AF6D90D82296A39200F19AF2 /* Frameworks */,
+				AF6D90D92296A39200F19AF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AudioTest WatchKit Extension";
+			productName = "AudioTest WatchKit Extension";
+			productReference = AF6D90DB2296A39200F19AF2 /* AudioTest WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF6D90B22296A38E00F19AF2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Dung Ho";
+				TargetAttributes = {
+					AF6D90B92296A38E00F19AF2 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					AF6D90CB2296A39100F19AF2 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					AF6D90DA2296A39200F19AF2 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+				};
+			};
+			buildConfigurationList = AF6D90B52296A38E00F19AF2 /* Build configuration list for PBXProject "AudioTest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF6D90B12296A38E00F19AF2;
+			productRefGroup = AF6D90BB2296A38E00F19AF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF6D90B92296A38E00F19AF2 /* AudioTest */,
+				AF6D90CB2296A39100F19AF2 /* AudioTest WatchKit App */,
+				AF6D90DA2296A39200F19AF2 /* AudioTest WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF6D90B82296A38E00F19AF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6D90C82296A39100F19AF2 /* LaunchScreen.storyboard in Resources */,
+				AF6D90C52296A39100F19AF2 /* Assets.xcassets in Resources */,
+				AF6D90C32296A38E00F19AF2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF6D90CA2296A39100F19AF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6D90D52296A39200F19AF2 /* Assets.xcassets in Resources */,
+				AF6D90D32296A39100F19AF2 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF6D90D92296A39200F19AF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6D90E72296A39300F19AF2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF6D90B62296A38E00F19AF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6D90C02296A38E00F19AF2 /* ViewController.swift in Sources */,
+				AF6D90BE2296A38E00F19AF2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF6D90D72296A39200F19AF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6D90E52296A39200F19AF2 /* NotificationController.swift in Sources */,
+				AF6D90E32296A39200F19AF2 /* ExtensionDelegate.swift in Sources */,
+				AF6D90E12296A39200F19AF2 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF6D90CF2296A39100F19AF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF6D90CB2296A39100F19AF2 /* AudioTest WatchKit App */;
+			targetProxy = AF6D90CE2296A39100F19AF2 /* PBXContainerItemProxy */;
+		};
+		AF6D90DE2296A39200F19AF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF6D90DA2296A39200F19AF2 /* AudioTest WatchKit Extension */;
+			targetProxy = AF6D90DD2296A39200F19AF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AF6D90C12296A38E00F19AF2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6D90C22296A38E00F19AF2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AF6D90C62296A39100F19AF2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6D90C72296A39100F19AF2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AF6D90D12296A39100F19AF2 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6D90D22296A39100F19AF2 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF6D90EA2296A39300F19AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF6D90EB2296A39300F19AF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF6D90ED2296A39300F19AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = "AudioTest WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uniqueYung19.AudioTest.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		AF6D90EE2296A39300F19AF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = "AudioTest WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uniqueYung19.AudioTest.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		AF6D90F12296A39300F19AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				IBSC_MODULE = AudioTest_WatchKit_Extension;
+				INFOPLIST_FILE = "AudioTest WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = uniqueYung19.AudioTest.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		AF6D90F22296A39300F19AF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				IBSC_MODULE = AudioTest_WatchKit_Extension;
+				INFOPLIST_FILE = "AudioTest WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = uniqueYung19.AudioTest.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		AF6D90F52296A39300F19AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = AudioTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uniqueYung19.AudioTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF6D90F62296A39300F19AF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56U5SD9536;
+				INFOPLIST_FILE = AudioTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = uniqueYung19.AudioTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF6D90B52296A38E00F19AF2 /* Build configuration list for PBXProject "AudioTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF6D90EA2296A39300F19AF2 /* Debug */,
+				AF6D90EB2296A39300F19AF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF6D90EC2296A39300F19AF2 /* Build configuration list for PBXNativeTarget "AudioTest WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF6D90ED2296A39300F19AF2 /* Debug */,
+				AF6D90EE2296A39300F19AF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF6D90F02296A39300F19AF2 /* Build configuration list for PBXNativeTarget "AudioTest WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF6D90F12296A39300F19AF2 /* Debug */,
+				AF6D90F22296A39300F19AF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF6D90F42296A39300F19AF2 /* Build configuration list for PBXNativeTarget "AudioTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF6D90F52296A39300F19AF2 /* Debug */,
+				AF6D90F62296A39300F19AF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF6D90B22296A38E00F19AF2 /* Project object */;
+}
