@@ -27,7 +27,7 @@
                     </items>
                     <connections>
                         <outlet property="btn" destination="TKn-kW-0qa" id="ds0-0V-P6L"/>
-                        <outlet property="playButton" destination="2bc-Xt-5aK" id="Q8c-tz-YM7"/>
+                        <outlet property="playButton" destination="2bc-Xt-5aK" id="omJ-qk-Rdb"/>
                     </connections>
                 </controller>
             </objects>

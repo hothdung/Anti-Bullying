@@ -16,7 +16,8 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
     var audioRecorder : AVAudioRecorder!
     var settings = [String : Any]()
     var player: AVAudioPlayer?
-
+    var filename: String?
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         recordingSession = AVAudioSession.sharedInstance()
@@ -37,9 +38,9 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
         catch{
             print("failed to record!")
         }
-        // Configure interface objects here.
         
         // Audio Settings
+        
         
         settings = [
             AVFormatIDKey:Int(kAudioFormatLinearPCM),
@@ -57,8 +58,6 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
-        print("Test")
     }
     
     override func didDeactivate() {
@@ -67,30 +66,27 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
     }
     
     
-    func directoryURL() -> URL? {
-        let fileManager = FileManager.default
-        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = urls[0] as URL
-        let soundUrl = documentDirectory.appendingPathComponent("sound.wav")
-        //      var soundUrlStr = soundUrl?.path
-        //print(fileManager.fileExists(atPath: soundUrlStr))
-        
-        let filePath = (soundUrl).path
-        print(filePath)
-        
-        print("URL")
-        print(soundUrl)
-        return soundUrl as URL?
-        
+ 
+    
+    func getDocumentsDirectory() -> URL
+    {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
-    
+    func getFileUrl() -> URL
+    {
+        let filePath = getDocumentsDirectory().appendingPathComponent(filename!)
+        print("Marker1: \(filePath)")
+        return filePath
+    }
     
     func startRecording(){
         let audioSession = AVAudioSession.sharedInstance()
         
         do{
-            audioRecorder = try AVAudioRecorder(url: self.directoryURL()! as URL,
+            audioRecorder = try AVAudioRecorder(url: getFileUrl(),
                                                 settings: settings)
             audioRecorder.delegate = self
             audioRecorder.prepareToRecord()
@@ -110,10 +106,12 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
     
     func finishRecording(success: Bool) {
         audioRecorder.stop()
+        audioRecorder = nil
+
         if success {
             print(success)
         } else {
-            audioRecorder = nil
+            //audioRecorder = nil
             print("Somthing Wrong.")
         }
     }
@@ -121,24 +119,31 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
     
     @IBAction func recordAudio() {
         
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let url = URL(fileURLWithPath: path)
-        let pathPart = url.appendingPathComponent("sound.wav")
-        let filePath = pathPart.path
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: filePath){
-            print("File exists!")
-            //let audioAsset = WKAudioFileAsset(url:pathPart)
+    
+        if audioRecorder == nil {
+            print("Pressed")
+            self.btn.setTitle("Stop")
+            self.btn.setBackgroundColor(UIColor(red: 119.0/255.0, green: 119.0/255.0, blue: 119.0/255.0, alpha: 1.0))
+            filename = NSUUID().uuidString+".wav"
+            self.startRecording()
             
-            //var request = URLRequest(url: URL(string:"http://147.46.242.219")!)
+            
+        } else {
+            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let url = URL(fileURLWithPath: path)
+            print("Filename\(filename!)")
+            let pathPart = url.appendingPathComponent(filename!)
+            let filePath = pathPart.path
+            
             let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addsound.php")! as URL)
             request.httpMethod = "POST"
             let audioData = NSData(contentsOfFile: filePath)
+            print("Result is\(getFileUrl().path)")
+            print("Binary data printing")
             print(audioData)
             let postString = "a=\(audioData)"
             
             
-            //request.httpBody = try NSData(contentsOfFile: filePath) as Data
             request.httpBody = postString.data(using: .utf8)
             
             let task = URLSession.shared.dataTask(with: request as URLRequest){
@@ -156,27 +161,16 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
                 
             }
             task.resume()
-        }
             
-        else{
-            print("File does not exist")
-        }
-        
-        
-        if audioRecorder == nil {
-            print("Pressed")
-            self.btn.setTitle("Stop")
-            self.btn.setBackgroundColor(UIColor(red: 119.0/255.0, green: 119.0/255.0, blue: 119.0/255.0, alpha: 1.0))
-            self.startRecording()
-            
-            
-        } else {
             self.btn.setTitle("Record")
             print("Pressed2")
             self.btn.setBackgroundColor(UIColor(red: 221.0/255.0, green: 27.0/255.0, blue: 50.0/255.0, alpha: 1.0))
             self.finishRecording(success: true)
             
         }
+       
+        
+    
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
@@ -194,10 +188,11 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
         if fileManager.fileExists(atPath: filePath){
             print("File exists!")
             do {
-                player = try AVAudioPlayer(contentsOf: pathPart)
+                player = try AVAudioPlayer(contentsOf: audioRecorder.url)
                 player?.play()
             } catch {
-                // couldn't load file :(
+                
+                print("File cannot be played!")
             }
         }else{
             print("File does not exist!")
@@ -205,4 +200,5 @@ class InterfaceController: WKInterfaceController, AVAudioRecorderDelegate{
     }
     
 }
+
 
