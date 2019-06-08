@@ -46,9 +46,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
     var userAccelerStr = ""
     var rotationRateStr = ""
     var attitudeStr = ""
+    var movement = ""
     
     var manualLat: Double = 0.0
     var manualLong: Double = 0.0
+    var heartRateVal: Double = 0.0
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -83,7 +85,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         
         manualLat = lat
         manualLong = long
-        
+       
+        /**
         let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addgps.php")! as URL)
         request.httpMethod = "POST"
         let postString = "a=\(lat)&b=\(long)"
@@ -104,6 +107,8 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         }
         
         task.resume()
+        
+        */
     }
     
     func locationManager(_: CLLocationManager, didFailWithError error: Error) {
@@ -130,25 +135,25 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                                          (deviceMotion?.gravity.y)!,
                                          (deviceMotion?.gravity.z)!)
                 
-               self.sendData(x: self.gravityStr)
-               print(self.gravityStr)
+               //self.sendData(x: self.gravityStr)
+              // print(self.gravityStr)
                 
                 self.userAccelerStr = String(format: "X2: %.2f Y: %.2f Z: %.2f" ,
                                              (deviceMotion?.userAcceleration.x)!,
                                              (deviceMotion?.userAcceleration.y)!,
                                              (deviceMotion?.userAcceleration.z)!)
                 
-                self.sendData(x: self.userAccelerStr)
-                print(self.userAccelerStr)
+                //self.sendData(x: self.userAccelerStr)
+                //print(self.userAccelerStr)
                 
                 self.rotationRateStr = String(format: "X3: %.2f Y: %.2f Z: %.2f" ,
                                               (deviceMotion?.rotationRate.x)!,
                                               (deviceMotion?.rotationRate.y)!,
                                               (deviceMotion?.rotationRate.z)!)
                 
-               self.sendData(x: self.rotationRateStr)
+               //self.sendData(x: self.rotationRateStr)
                 
-               print(self.rotationRateStr)
+               //print(self.rotationRateStr)
                 
                 
                 self.attitudeStr = String(format: "R4: %.1f p: %.1f y: %.1f" ,
@@ -156,9 +161,12 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                                           (deviceMotion?.attitude.pitch)!,
                                           (deviceMotion?.attitude.yaw)!)
                 
-               self.sendData(x: self.attitudeStr)
+               //self.sendData(x: self.attitudeStr)
                 
-                print(self.attitudeStr)
+                //print(self.attitudeStr)
+                
+                //self.movement = self.gravityStr + self.userAccelerStr + self.rotationRateStr + self.attitudeStr
+                self.movement = "\(self.gravityStr) \(self.userAccelerStr) \(self.rotationRateStr) \(self.attitudeStr)"
             }
         }
     }
@@ -169,6 +177,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         motionManager.stopDeviceMotionUpdates()
     }
    
+    /**
     func sendData(x:String){
         let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addgyro2.php")! as URL)
         request.httpMethod = "POST"
@@ -193,7 +202,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         
     }
  
-
+*/
    /**
     func getDocumentsDirectory() -> URL
     {
@@ -488,9 +497,12 @@ extension InterfaceController: HKWorkoutSessionDelegate{
                 
                 //print("Type of value is +\(type(of:value))")
                 
-                let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addheartrate.php")! as URL)
+                let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addall.php")! as URL)
                 request.httpMethod = "POST"
-                let postString = "a=\(value)"
+                print(self.movement)
+                //let randomStr = 42.0
+                let postString = "gps_x=\(self.manualLat)&gps_y=\(self.manualLong)&a=\(self.movement)&hr=\(value)"
+                print(postString)
                 request.httpBody = postString.data(using: .utf8)
                 
                 let task = URLSession.shared.dataTask(with: request as URLRequest) {
