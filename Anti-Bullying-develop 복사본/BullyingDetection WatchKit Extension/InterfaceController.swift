@@ -47,6 +47,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
     var rotationRateStr = ""
     var attitudeStr = ""
     
+    var manualLat: Double = 0.0
+    var manualLong: Double = 0.0
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -68,39 +71,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
             }
         }
         
-        recordingSession = AVAudioSession.sharedInstance()
-        
-        do{
-            try recordingSession.setCategory(AVAudioSession.Category.playAndRecord)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission(){[unowned self] allowed in
-                DispatchQueue.main.async {
-                    if allowed{
-                        print("Allow")
-                    } else{
-                        print("Don't Allow")
-                    }
-                }
-            }
-        }
-        catch{
-            print("failed to record!")
-        }
-        // Configure interface objects here.
-        
-        // Audio Settings
-        
-        settings = [
-            AVFormatIDKey:Int(kAudioFormatLinearPCM),
-            AVSampleRateKey:44100.0,
-            AVNumberOfChannelsKey:1,
-            AVLinearPCMBitDepthKey:8,
-            AVLinearPCMIsFloatKey:false,
-            AVLinearPCMIsBigEndianKey:false,
-            AVEncoderAudioQualityKey:AVAudioQuality.max.rawValue
-            
-        ]
-         motionManager.deviceMotionUpdateInterval = 1
+        motionManager.deviceMotionUpdateInterval = 1
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -109,6 +80,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         let long = currentLoc.coordinate.longitude
         print(lat)
         print(long)
+        
+        manualLat = lat
+        manualLong = long
         
         let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addgps.php")! as URL)
         request.httpMethod = "POST"
@@ -151,20 +125,20 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                 print("Encountered error: \(error!)")
             }
             if deviceMotion != nil {
-                self.gravityStr = String(format: "X: %.2f Y: %.2f Z: %.2f" ,
+                self.gravityStr = String(format: "X1: %.2f Y: %.2f Z: %.2f" ,
                                          (deviceMotion?.gravity.x)!,
                                          (deviceMotion?.gravity.y)!,
                                          (deviceMotion?.gravity.z)!)
                 
-                self.sendData(x: "\(deviceMotion?.gravity.x)", y: "\(deviceMotion?.gravity.x)", z: "\(deviceMotion?.gravity.x)")
-                print(self.gravityStr)
+               self.sendData(x: self.gravityStr)
+               print(self.gravityStr)
                 
                 self.userAccelerStr = String(format: "X2: %.2f Y: %.2f Z: %.2f" ,
                                              (deviceMotion?.userAcceleration.x)!,
                                              (deviceMotion?.userAcceleration.y)!,
                                              (deviceMotion?.userAcceleration.z)!)
                 
-                self.sendData(x: "\(deviceMotion?.userAcceleration.x)", y: "\(deviceMotion?.userAcceleration.y)", z: "\(deviceMotion?.userAcceleration.z)")
+                self.sendData(x: self.userAccelerStr)
                 print(self.userAccelerStr)
                 
                 self.rotationRateStr = String(format: "X3: %.2f Y: %.2f Z: %.2f" ,
@@ -172,17 +146,17 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                                               (deviceMotion?.rotationRate.y)!,
                                               (deviceMotion?.rotationRate.z)!)
                 
-                self.sendData(x: "\(deviceMotion?.rotationRate.x)", y: "\(deviceMotion?.rotationRate.y)", z: "\(deviceMotion?.rotationRate.z)")
+               self.sendData(x: self.rotationRateStr)
                 
-                print(self.rotationRateStr)
+               print(self.rotationRateStr)
                 
                 
-                self.attitudeStr = String(format: "r4: %.1f p: %.1f y: %.1f" ,
+                self.attitudeStr = String(format: "R4: %.1f p: %.1f y: %.1f" ,
                                           (deviceMotion?.attitude.roll)!,
                                           (deviceMotion?.attitude.pitch)!,
                                           (deviceMotion?.attitude.yaw)!)
                 
-                self.sendData(x: "\(deviceMotion?.attitude.roll)", y: "\(deviceMotion?.attitude.pitch)", z: "\(deviceMotion?.attitude.yaw)")
+               self.sendData(x: self.attitudeStr)
                 
                 print(self.attitudeStr)
             }
@@ -194,11 +168,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         super.didDeactivate()
         motionManager.stopDeviceMotionUpdates()
     }
-    
-    func sendData(x:String, y:String, z:String){
-        let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addgyro.php")! as URL)
+   
+    func sendData(x:String){
+        let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addgyro2.php")! as URL)
         request.httpMethod = "POST"
-        let postString = "a=\(x)&b=\(y)&c=\(z)"
+        let postString = "a=\(x)"
         request.httpBody = postString.data(using: .utf8)
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -218,7 +192,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         task.resume()
         
     }
-   
+ 
+
+   /**
     func getDocumentsDirectory() -> URL
     {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -271,10 +247,113 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
             finishRecording(success: false)
         }
     }
+*/
+    
+    // generate a short unique id
+    struct ShortCodeGenerator {
+        
+        private static let base62chars = [Character]("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+        private static let maxBase : UInt32 = 62
+        
+        static func getCode(withBase base: UInt32 = maxBase, length: Int) -> String {
+            var code = ""
+            for _ in 0..<length {
+                let random = Int(arc4random_uniform(min(base, maxBase)))
+                code.append(base62chars[random])
+            }
+            return code
+        }
+    }
     
     
+    // Getting the address from longitude and latitude
+    func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = Double("\(pdblLatitude)")!
+        //21.228124
+        let lon: Double = Double("\(pdblLongitude)")!
+        //72.833770
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        
+        
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    print(pm.country)
+                    print(pm.locality)
+                    print(pm.subLocality)
+                    print(pm.thoroughfare)
+                    print(pm.postalCode)
+                    print(pm.subThoroughfare)
+                    var addressString : String = ""
+                    if pm.subLocality != nil {
+                        addressString = addressString + pm.subLocality! + ", "
+                    }
+                    if pm.thoroughfare != nil {
+                        addressString = addressString + pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString = addressString + pm.locality! + ", "
+                    }
+                    if pm.country != nil {
+                        addressString = addressString + pm.country! + ", "
+                    }
+                    if pm.postalCode != nil {
+                        addressString = addressString + pm.postalCode! + " "
+                    }
+                    
+                    
+                    print(addressString)
+                }
+        })
+        
+    }
     // when button clicked label is shown
     @IBAction func btnPressed() {
+      
+        
+        // manual reporting functionality
+        // generating 6 character long unique id
+        var uniqueId = ShortCodeGenerator.getCode(length: 6)
+        let txtMsg = "I am student \(uniqueId). I need help!"
+        
+        // Getting the address
+        var latStr = String(format:"%.2f",manualLat)
+        var longStr = String(format:"%.2f",manualLong)
+        getAddressFromLatLon(pdblLatitude: latStr, withLongitude: longStr)
+        let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addmanual.php")! as URL)
+        request.httpMethod = "POST"
+        let postString = "a=\(manualLat)&b=\(manualLong)&c=\(txtMsg)"
+        request.httpBody = postString.data(using: .utf8)
+        
+        print(postString)
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            print("response = \(response)")
+            
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("responseString = \(responseString)")
+        }
+        
+        task.resume()
         
         if(!isRecording){
             let stopTitle = NSMutableAttributedString(string: "Stop Recording")
@@ -340,7 +419,7 @@ extension InterfaceController: HKWorkoutSessionDelegate{
         
         
       // Here audio?
-    
+    /**
         if audioRecorder == nil {
             print("Pressed")
             filename = NSUUID().uuidString+".wav"
@@ -385,6 +464,8 @@ extension InterfaceController: HKWorkoutSessionDelegate{
             self.finishRecording(success: true)
             
         }
+ 
+ */
         
         
     }
@@ -405,6 +486,7 @@ extension InterfaceController: HKWorkoutSessionDelegate{
                 // after extraction of bpm value conversion to double
                 let value = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
                 
+                //print("Type of value is +\(type(of:value))")
                 
                 let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addheartrate.php")! as URL)
                 request.httpMethod = "POST"
