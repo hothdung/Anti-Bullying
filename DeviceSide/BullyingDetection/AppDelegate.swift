@@ -2,53 +2,26 @@
 //  AppDelegate.swift
 //  BullyingDetection
 //
-//  Created by 신유정 on 28/04/2019.
-//  Copyright © 2019 Dung Ho. All rights reserved.
+//  Created by Dung Ho and Jaeyoung Kim
+//  Copyright © 2019 호탄융, 김재영. All rights reserved.
 //
 
 import UIKit
 import CoreLocation
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let locationManager = CLLocationManager()
-    var bgIdentifier: UIBackgroundTaskIdentifier?
-    var replyHandler:([NSObject : AnyObject]?)->Void = {arg in}
-
-    func application(application: UIApplication,
-                     handleWatchKitExtensionRequest userInfo:
-        [NSObject : AnyObject]?,
-                     reply: (([NSObject : AnyObject]?) -> Void)!) {
-        
-        replyHandler = reply
-        
-        bgIdentifier = application.beginBackgroundTask(
-            withName: "MyTask", expirationHandler: { () -> Void in
-                print("Time expired")
-        })
-        locationManager.delegate = self as! CLLocationManagerDelegate
-        locationManager.startUpdatingLocation()
+    
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        return true
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        
-        locationManager.stopUpdatingLocation()
-        
-        let currentLocation = locations[locations.count - 1]
-            as? CLLocation
-        
-        var replyValues = Dictionary<String, AnyObject>()
-        
-        replyValues["latitude"] = currentLocation?.coordinate.latitude as AnyObject?
-        replyValues["longitude"] = currentLocation?.coordinate.longitude as AnyObject?
-        
-        
-        UIApplication.shared.endBackgroundTask(bgIdentifier!)
-        
-        replyHandler(replyValues as [NSObject : AnyObject])
-    }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -70,6 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    let healthStore = HKHealthStore()
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+        healthStore.handleAuthorizationForExtension{
+            (success,error) in
+        }
     }
 
 

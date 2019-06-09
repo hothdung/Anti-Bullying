@@ -49,5 +49,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Location information is required</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Location information is required</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>BullyingDetection saves interval workouts to your phone’s HealthKit data
+        store.</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>BullyingDetection accesses health data so that saved workouts can be
+        accessed later.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Access to mircrophone required!</string>
 </dict>
 </plist>
