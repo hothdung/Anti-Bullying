@@ -51,6 +51,16 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
     var manualLat: Double = 0.0
     var manualLong: Double = 0.0
     var heartRateVal: Double = 0.0
+    var prev_grav_z: Double = 0.0
+    var prev_acc_z: Double = 0.0
+    var grav_x:Double = 0.0
+    var grav_y:Double = 0.0
+    var grav_z:Double = 0.0
+    var acc_x:Double = 0.0
+    var acc_y:Double = 0.0
+    var acc_z:Double = 0.0
+    
+    var sendOrNot:Bool = false
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -73,7 +83,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
             }
         }
         
-        motionManager.deviceMotionUpdateInterval = 1
+        motionManager.deviceMotionUpdateInterval = 0.5
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -130,19 +140,51 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                 print("Encountered error: \(error!)")
             }
             if deviceMotion != nil {
+                self.grav_x = (deviceMotion?.gravity.x)!
+                self.grav_y = (deviceMotion?.gravity.y)!
+                self.grav_z = (deviceMotion?.gravity.z)!
                 self.gravityStr = String(format: "grav_x: %.2f, grav_y: %.2f, grav_z: %.2f" ,
-                                         (deviceMotion?.gravity.x)!,
-                                         (deviceMotion?.gravity.y)!,
-                                         (deviceMotion?.gravity.z)!)
+                                         self.grav_x,
+                                         self.grav_y,
+                                         self.grav_z)
                 
+                if self.prev_grav_z == 0.0 {
+                    self.prev_grav_z = self.grav_z
+                    self.sendOrNot = true
+                }
+                else{
+                    if (self.grav_z - self.prev_grav_z) <= -0.3{
+                        self.prev_grav_z = self.grav_z
+                        self.sendOrNot = true
+                    }
+                    else{
+                        self.sendOrNot = false
+                    }
+                }
                //self.sendData(x: self.gravityStr)
               // print(self.gravityStr)
                 
+                self.acc_x = (deviceMotion?.userAcceleration.x)!
+                self.acc_y = (deviceMotion?.userAcceleration.y)!
+                self.acc_z = (deviceMotion?.userAcceleration.z)!
                 self.userAccelerStr = String(format: "acc_x: %.2f, acc_y: %.2f, acc_z: %.2f" ,
-                                             (deviceMotion?.userAcceleration.x)!,
-                                             (deviceMotion?.userAcceleration.y)!,
-                                             (deviceMotion?.userAcceleration.z)!)
+                                             self.acc_x,
+                                             self.acc_y,
+                                             self.acc_z)
                 
+                if self.prev_acc_z == 0.0 {
+                    self.prev_acc_z = self.acc_z
+                    self.sendOrNot = true
+                }
+                else{
+                    if (self.acc_z - self.prev_acc_z) <= -0.3{
+                        self.prev_acc_z = self.acc_z
+                        self.sendOrNot = true
+                    }
+                    else{
+                        self.sendOrNot = false
+                    }
+                }
                 //self.sendData(x: self.userAccelerStr)
                 //print(self.userAccelerStr)
                 
@@ -166,7 +208,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                 //print(self.attitudeStr)
                 
                 //self.movement = self.gravityStr + self.userAccelerStr + self.rotationRateStr + self.attitudeStr
-                self.movement = "\(self.gravityStr) \(self.userAccelerStr) \(self.rotationRateStr) \(self.attitudeStr)"
+                self.movement = "\(self.gravityStr), \(self.userAccelerStr), \(self.rotationRateStr), \(self.attitudeStr)"
             }
         }
     }
@@ -390,7 +432,10 @@ extension InterfaceController: HKWorkoutSessionDelegate{
             print(date)
             if let query = heartRateQuery(date){
                 self.currentQuery = query
-                healthStore.execute(query)
+                if self.sendOrNot{
+                    healthStore.execute(query)
+                    self.sendOrNot = false
+                }
             }
         //Execute Query
         case .ended:
