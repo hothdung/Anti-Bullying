@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This information is required to identify your current location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This information is required to identify your current location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -20,6 +24,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,5 +49,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Location information is required</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Location information is required</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>BullyingDetection saves interval workouts to your phone’s HealthKit data
+        store.</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>BullyingDetection accesses health data so that saved workouts can be
+        accessed later.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Access to mircrophone required!</string>
 </dict>
 </plist>

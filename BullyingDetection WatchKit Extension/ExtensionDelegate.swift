@@ -2,8 +2,8 @@
 //  ExtensionDelegate.swift
 //  BullyingDetection WatchKit Extension
 //
-//  Created by 신유정 on 28/04/2019.
-//  Copyright © 2019 Dung Ho. All rights reserved.
+//  Created by Dung Ho and Jaeyoung Kim
+//  Copyright © 2019 호탄융, 김재영. All rights reserved.
 //
 
 import WatchKit
