@@ -90,8 +90,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         let currentLoc =  locations[0]
         let lat = currentLoc.coordinate.latitude
         let long = currentLoc.coordinate.longitude
-        print(lat)
-        print(long)
         
         manualLat = lat
         manualLong = long
@@ -203,13 +201,13 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
                 
                 //self.movement = self.gravityStr + self.userAccelerStr + self.rotationRateStr + self.attitudeStr
                 if self.sendOrNot{
-                    print("Falling motion detected!")
+                    print("I am student. I need help!")
                     self.movement = "\(self.gravityStr), \(self.userAccelerStr), \(self.rotationRateStr), \(self.attitudeStr), \("_1")"
                 }
                 else{
                     self.movement = "\(self.gravityStr), \(self.userAccelerStr), \(self.rotationRateStr), \(self.attitudeStr), \("_0")"
                 }
-                print(self.movement)
+                //print(self.movement)
                 self.sendOrNot = false
             }
         }
@@ -372,25 +370,29 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         })
         
     }
-    // when button clicked label is shown
-    @IBAction func btnPressed() {
-      
-        
+    
+    
+    @IBAction func manualBtnPressed() {
         // manual reporting functionality
         // generating 6 character long unique id
-        var uniqueId = ShortCodeGenerator.getCode(length: 6)
+        
+        let uniqueId = ShortCodeGenerator.getCode(length: 6)
         let txtMsg = "I am student \(uniqueId). I need help!"
         
+       
         // Getting the address
+        
+        if manualLat != 0.0 && manualLong != 0.0 {
         var latStr = String(format:"%.2f",manualLat)
         var longStr = String(format:"%.2f",manualLong)
         getAddressFromLatLon(pdblLatitude: latStr, withLongitude: longStr)
         let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addmanual.php")! as URL)
         request.httpMethod = "POST"
         let postString = "a=\(manualLat)&b=\(manualLong)&c=\(txtMsg)"
+        //print(txtMsg)
         request.httpBody = postString.data(using: .utf8)
         
-        //print(postString)
+   
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             data, response, error in
@@ -407,7 +409,20 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate,AVAu
         }
         
         task.resume()
+        }
+
+    }
+    
+    
+    
+    
+    // when button clicked label is shown
+    @IBAction func btnPressed() {
         
+        
+        
+        
+      
         if(!isRecording){
             let stopTitle = NSMutableAttributedString(string: "Stop Recording")
             stopTitle.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], range: NSMakeRange(0, stopTitle.length))
@@ -540,6 +555,12 @@ extension InterfaceController: HKWorkoutSessionDelegate{
                 let value = sample.quantity.doubleValue(for: HKUnit(from: "count/min"))
                 
                 //print("Type of value is +\(type(of:value))")
+                
+                if value == 100.0 {
+                    var studentId = ShortCodeGenerator.getCode(length: 6)
+                    let txtMsg = "I am student \(studentId). I need help!"
+                    print("AutomaticMsg: I am student \(txtMsg)")
+                }
                 
                 let request = NSMutableURLRequest(url: NSURL(string: "http://147.46.242.219/addall.php")! as URL)
                 request.httpMethod = "POST"
