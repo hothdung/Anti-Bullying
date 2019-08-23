@@ -1,0 +1,6 @@
+framework module Pods_AudioSpiel {
+  umbrella header "Pods-AudioSpiel-umbrella.h"
+
+  export *
+  module * { export * }
+}

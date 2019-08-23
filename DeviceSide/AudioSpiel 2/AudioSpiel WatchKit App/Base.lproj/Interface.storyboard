@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+    </dependencies>
+    <scenes>
+        <!--Audio-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="Audio" hidesWhenLoading="NO" id="AgC-eL-Hgc" customClass="AudioInterfaceController" customModule="AudioSpiel_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" title="Record" id="0gv-ge-Hww">
+                            <connections>
+                                <action selector="recordFile" destination="AgC-eL-Hgc" id="dLT-KN-f3r"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" verticalAlignment="center" title="Play" id="UFF-ju-tV9">
+                            <connections>
+                                <action selector="playFile" destination="AgC-eL-Hgc" id="8gC-XK-XsO"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Send" id="hkg-6B-zGc">
+                            <connections>
+                                <action selector="sendFile" destination="AgC-eL-Hgc" id="JE6-3N-tIx"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
